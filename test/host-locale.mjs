@@ -28,7 +28,7 @@ assert.equal(hostLocaleOf(ctx), null)
 assert.equal(localeOf({ locale: 'auto' }, ctx), 'zh', 'unobservable browser/native preference retains the Host compatibility fallback')
 
 const work = mkdtempSync(join(tmpdir(), 'cm-host-locale-'))
-const names = ['DSH_HOME', 'DEEPSEEK_API_KEY', 'DSH_DEEPSEEK_API_KEY', 'DEEPSEEK_BALANCE_API_KEY', 'OPENCODE_GO_API_KEY', 'OPENCODE_API_KEY', 'GO_API_KEY']
+const names = ['DSH_HOME', 'DEEPSEEK_API_KEY', 'DSH_DEEPSEEK_API_KEY', 'DEEPSEEK_BALANCE_API_KEY', 'OPENCODE_GO_API_KEY', 'OPENCODE_API_KEY', 'GO_API_KEY', 'HOME', 'USERPROFILE', 'XDG_CONFIG_HOME']
 const saved = Object.fromEntries(names.map(name => [name, process.env[name]]))
 const originalFetch = globalThis.fetch
 const effects = [], events = new Map()
@@ -36,6 +36,7 @@ let service
 try {
   for (const name of names) delete process.env[name]
   process.env.DSH_HOME = work
+  process.env.HOME = work
   const file = join(work, 'storages', 'cost-meter', 'ledger.json')
   mkdirSync(join(work, 'storages', 'cost-meter'), { recursive: true })
   writeFileSync(file, JSON.stringify({ version: 1, days: {}, config: { locale: 'auto', goQuota: { enabled: true }, balance: { display: 'off' } } }))
