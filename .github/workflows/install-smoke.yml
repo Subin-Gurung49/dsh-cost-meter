@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   context-costs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -41,7 +41,7 @@ jobs:
           node test/session-costs-browser.mjs
 
   sidebar-search-recovery:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -67,7 +67,7 @@ jobs:
           node test/credential-editor-dom.mjs --baseline 171cabea6ca518e4b1fa895a0010dc96e3a03748 # upstream v1.8.6 commit
 
   statistics-client:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -105,7 +105,7 @@ jobs:
           CM_TEST_BROWSER=/usr/bin/google-chrome node test/statistics-dialog-titlebar.mjs "$PWD/.tmp-statistics-client/node_modules" --wait --timeout=300000
 
   native-search-rc2:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         include:
@@ -158,7 +158,7 @@ jobs:
           if ($LASTEXITCODE -ne 0 -or -not ($config | Select-String 'name: dsh-cost-meter')) { exit 1 }
 
   next-host-compatibility:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -185,7 +185,7 @@ jobs:
           node test/next-host-install.mjs .tmp-next-package/dsh-cost-meter-*.tgz
 
   market-hot-install:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -233,7 +233,7 @@ jobs:
           node test/typert-source-host.mjs
 
   one-click-install:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -279,7 +279,7 @@ jobs:
         run: node scripts/build.mjs && git diff --exit-code lib/client.js lib/client.statistics.js lib/client.openrouter.js
 
   fork-regressions:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
