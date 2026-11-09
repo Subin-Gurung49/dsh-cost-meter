@@ -64,7 +64,7 @@ jobs:
         run: |
           export DSH_TEST_NODE_MODULES="$PWD/.tmp-sidebar-host/node_modules"
           node test/sidebar-search-recovery.mjs
-          node test/credential-editor-dom.mjs --baseline v1.8.6
+          node test/credential-editor-dom.mjs --baseline 171cabea6ca518e4b1fa895a0010dc96e3a03748 # upstream v1.8.6 commit
 
   statistics-client:
     runs-on: ubuntu-latest
