@@ -225,7 +225,7 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install --frozen-lockfile
-          npm install --prefix .tmp-typert-host --no-audit --no-fund @deepseek-ai/dsh@0.1.6-alpha.1 @deepseek-ai/cordis@4.0.4 @deepseek-ai/dsh-typert-loader@0.1.6-alpha.1
+          npm install --prefix .tmp-typert-host --no-audit --no-fund @deepseek-ai/dsh@0.1.6-alpha.1 @deepseek-ai/cordis@4.0.4 @deepseek-ai/cordis-plugin-loader@1.0.5 @deepseek-ai/dsh-typert-loader@0.1.6-alpha.1
       - name: Validate source host and shipped client codecs
         run: |
           export DSH_TEST_SOURCE_ROOT="$PWD/.tmp-typert-upstream"
